@@ -1,0 +1,534 @@
+/* ============================================================
+   plan.css — Plano Semanal de Estudos
+============================================================ */
+
+/* ── Card vazio ──────────────────────────────────────────── */
+.plan-empty-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  background: var(--bg-primary);
+  border: 1.5px dashed var(--border-medium);
+  border-radius: var(--radius-lg);
+  cursor: default;
+}
+
+.plan-empty-icon { font-size: 1.8rem; }
+
+.plan-empty-text strong {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+
+.plan-empty-text p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* ── Card principal do plano ─────────────────────────────── */
+.plan-card {
+  background: var(--bg-primary);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.plan-card:hover {
+  border-color: var(--indigo-200);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.plan-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.plan-card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.plan-icon { font-size: 1.4rem; }
+
+.plan-course-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+  max-width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.plan-week-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.plan-overall-pct {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+/* ── Alerta de atraso ────────────────────────────────────── */
+.plan-alert {
+  background: #FEF3C7;
+  border: 1px solid #FCD34D;
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  color: #92400E;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* ── Hoje ────────────────────────────────────────────────── */
+.plan-today {
+  background: var(--accent-light);
+  border: 1px solid var(--indigo-200);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  margin-bottom: 12px;
+}
+
+.plan-today.rest {
+  background: var(--bg-secondary);
+  border-color: var(--border-light);
+}
+
+.plan-today-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.plan-today.rest .plan-today-label { color: var(--text-muted); }
+
+.plan-today-info {
+  font-size: 0.875rem;
+  color: var(--text-primary);
+}
+
+.plan-lesson-range {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-left: 6px;
+}
+
+.plan-today-done {
+  font-size: 0.78rem;
+  color: var(--success);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.plan-today-cta {
+  font-size: 0.78rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 6px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 3px 10px;
+  background: var(--bg-primary);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--indigo-200);
+  transition: all var(--transition);
+}
+
+.plan-today-cta:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* ── Faixa de dias da semana ─────────────────────────────── */
+.plan-week-strip {
+  display: flex;
+  gap: 4px;
+  justify-content: space-between;
+}
+
+.plan-day-dot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.plan-day-dot span {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.plan-day-dot.today span {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.plan-day-dot .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border-medium);
+}
+
+.plan-day-dot.study .dot { background: var(--indigo-200); }
+.plan-day-dot.done .dot { background: var(--success); }
+.plan-day-dot .dot.missed { background: #FCA5A5; }
+.plan-day-dot .dot.rest { background: var(--bg-tertiary); }
+
+/* ── Modal do plano completo ─────────────────────────────── */
+.modal-plan { max-width: 600px; padding: 0; overflow: hidden; }
+
+.plan-modal-header {
+  padding: 24px 24px 16px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.plan-modal-header h2 {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  text-align: left;
+}
+
+.plan-modal-header p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-align: left;
+  margin: 0;
+}
+
+.plan-weeks-grid {
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.plan-weeks-grid::-webkit-scrollbar { width: 4px; }
+.plan-weeks-grid::-webkit-scrollbar-thumb { background: var(--border-medium); border-radius: 99px; }
+
+.plan-week-block {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.plan-week-block.done {
+  border-color: var(--green-500);
+  background: var(--success-light);
+}
+
+.plan-week-num {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  padding: 8px 12px 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.plan-week-block.done .plan-week-num {
+  background: var(--green-100);
+  color: var(--green-700);
+  border-bottom-color: var(--green-500);
+}
+
+.plan-week-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+}
+
+.plan-week-day {
+  padding: 8px 4px;
+  text-align: center;
+  border-right: 1px solid var(--border-light);
+  position: relative;
+}
+
+.plan-week-day:last-child { border-right: none; }
+
+.plan-week-day.today {
+  background: var(--accent-light);
+}
+
+.plan-week-day.done {
+  background: var(--success-light);
+}
+
+.plan-week-day.missed {
+  background: #FEE2E2;
+}
+
+.pwd-name {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 3px;
+}
+
+.plan-week-day.today .pwd-name { color: var(--accent); }
+
+.pwd-count {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.pwd-rest {
+  font-size: 0.7rem;
+  color: var(--border-medium);
+}
+
+.pwd-done {
+  font-size: 0.8rem;
+  color: var(--success);
+  margin-top: 2px;
+}
+
+.plan-week-summary {
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-light);
+  font-style: italic;
+  background: var(--bg-secondary);
+}
+
+.plan-modal-footer {
+  padding: 14px 24px;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* ── Modal de log diário ─────────────────────────────────── */
+.modal-plan-log { max-width: 500px; }
+
+.plan-log-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.plan-log-icon { font-size: 2.5rem; margin-bottom: 8px; }
+
+.plan-log-header h2 {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.plan-log-header p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.plan-log-quote {
+  background: linear-gradient(135deg, var(--indigo-50), var(--accent-light));
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+
+.plq-text {
+  font-size: 0.875rem;
+  color: var(--indigo-700);
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+.plq-author {
+  font-size: 0.72rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.plan-log-info {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+  padding: 8px 12px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+}
+
+.plan-log-field {
+  margin-bottom: 16px;
+}
+
+.plan-log-field label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+#plan-log-summary {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  line-height: 1.6;
+  resize: vertical;
+  transition: border-color var(--transition);
+  font-family: inherit;
+}
+
+#plan-log-summary:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--bg-primary);
+}
+
+.plan-log-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.plan-log-mood {
+  margin-bottom: 16px;
+}
+
+.plan-log-mood label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.mood-options {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.mood-opt {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  color: var(--text-secondary);
+}
+
+.mood-opt:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.mood-opt input { display: none; }
+
+/* ── Modal de setup do plano ─────────────────────────────── */
+.modal-plan-setup { max-width: 480px; }
+
+.plan-setup-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.plan-days-picker {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.plan-day-btn {
+  padding: 6px 10px;
+  border: 1.5px solid var(--border-medium);
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition);
+  background: transparent;
+}
+
+.plan-day-btn.selected {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.plan-day-btn:hover:not(.selected) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.plan-preview-box {
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--accent-light);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--indigo-200);
+}
+
+.ppb-item {
+  font-size: 0.82rem;
+  color: var(--indigo-700);
+}
+
+/* ── Seção Meu Plano na home ─────────────────────────────── */
+.plan-section {
+  padding: 0 48px 60px;
+  background: var(--bg-secondary);
+}
+
+.plan-section .section-header {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 700px) {
+  .plan-section { padding: 0 20px 40px; }
+  .plan-week-days { grid-template-columns: repeat(4, 1fr); }
+}
